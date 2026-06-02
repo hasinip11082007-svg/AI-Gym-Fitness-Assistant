@@ -126,12 +126,34 @@ elif menu == "Virtual Gym Buddy":
 
     question = st.text_input("Ask Fitness Assistant")
 
-    if question:
-        st.write("🤖 AI Assistant:")
-        st.write(
-            "Maintain a balanced diet, stay hydrated, and exercise regularly."
-        )
+   question = st.text_input("Ask Fitness Assistant")
 
+if question:
+
+    q = question.lower()
+
+    st.write("🤖 AI Assistant:")
+
+    if "weight loss" in q:
+        st.write("Focus on a calorie deficit, cardio workouts, and high-protein meals.")
+
+    elif "muscle" in q or "gain" in q:
+        st.write("Increase protein intake and follow a strength-training routine.")
+
+    elif "protein" in q:
+        st.write("Good protein sources include eggs, chicken, fish, paneer, tofu, and lentils.")
+
+    elif "water" in q:
+        st.write("Aim for 2-4 liters of water daily depending on your activity level.")
+
+    elif "workout" in q:
+        st.write("A balanced workout includes cardio, strength training, and flexibility exercises.")
+
+    elif "diet" in q:
+        st.write("A healthy diet includes proteins, carbohydrates, healthy fats, fruits, and vegetables.")
+
+    else:
+        st.write("I can help with fitness, diet, workouts, hydration, and muscle gain questions.")
 # ---------------- PERFORMANCE SCORE ----------------
 
 elif menu == "Performance Score":
