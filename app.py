@@ -52,27 +52,60 @@ if menu == "Home":
 
     st.line_chart(data.set_index("Week"))
 elif menu == "AI Dietician":
-    weight = st.number_input("Weight (kg)")
-    goal = st.selectbox("Goal", ["Weight Loss", "Weight Gain"])
+    st.subheader("BMI Calculator")
+
+height = st.number_input("Height (cm)", min_value=1.0)
+weight = st.number_input("Weight (kg)", min_value=1.0)
+
+if st.button("Calculate BMI"):
+    bmi = weight / ((height/100)**2)
+    st.success(f"BMI = {bmi:.2f}")
+
+st.subheader("💧 Water Intake Calculator")
+
+if st.button("Calculate Water Intake"):
+    water = weight * 35
+    st.success(f"Drink {water:.0f} ml per day")
 
     if st.button("Generate Diet Plan"):
         st.success(f"Diet Plan Generated for {goal}")
 
 elif menu == "Habit Predictor":
-    days = st.slider("Days Missed",0,10)
+    st.subheader("Workout Recommendation")
 
-    if days > 3:
-        st.warning("Workout consistency is decreasing.")
-    else:
-        st.success("Excellent consistency!")
+goal = st.selectbox(
+    "Fitness Goal",
+    ["Weight Loss", "Muscle Gain", "General Fitness"]
+)
+
+if goal == "Weight Loss":
+    st.write("🏃 Recommended: Cardio + HIIT")
+elif goal == "Muscle Gain":
+    st.write("🏋️ Recommended: Strength Training")
+else:
+    st.write("🚴 Recommended: Mixed Workout")
 
 elif menu == "Virtual Gym Buddy":
-    mood = st.text_input("How are you feeling today?")
+    import random
 
-    if mood:
-        st.write("Keep going! Every workout matters.")
+quotes = [
+    "Push yourself because no one else will.",
+    "Small progress is still progress.",
+    "Stay consistent and trust the process.",
+    "Every workout counts."
+]
+
+if st.button("Get Motivation"):
+    st.success(random.choice(quotes))
+
+question = st.text_input("Ask Fitness Assistant")
+
+if question:
+    st.write("🤖 AI Assistant:")
+    st.write("Maintain a balanced diet and exercise regularly.")
 
 elif menu == "Performance Score":
+
     reps = st.slider("Reps",0,50)
     accuracy = st.slider("Accuracy",0,100)
 
@@ -80,6 +113,14 @@ elif menu == "Performance Score":
 
     st.metric("Performance Score", round(score,2))
 
+    import pandas as pd
+
+    data = pd.DataFrame({
+        "Week":[1,2,3,4,5],
+        "Score":[60,70,75,85,90]
+    })
+
+    st.line_chart(data.set_index("Week"))
 elif menu == "Gym Recommender":
     city = st.text_input("Enter City")
 
