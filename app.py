@@ -125,7 +125,7 @@ elif menu == "Virtual Gym Buddy":
         st.success(random.choice(quotes))
 
    
-   question = st.text_input("Ask Fitness Assistant")
+question = st.text_input("Ask Fitness Assistant")
 
 if question:
 
