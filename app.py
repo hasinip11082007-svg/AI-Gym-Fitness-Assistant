@@ -17,9 +17,40 @@ menu = st.sidebar.selectbox(
 )
 
 if menu == "Home":
-    st.header("Welcome")
-    st.write("Your Personal AI Fitness Coach")
 
+    st.image("https://images.unsplash.com/photo-1517836357463-d25dfeac3438")
+
+    st.markdown("# 🏋️ AI Gym & Fitness Assistant")
+    st.markdown("### Your Smart Personal Trainer")
+
+    st.subheader("BMI Calculator")
+
+    height = st.number_input("Height (cm)", min_value=1.0)
+    weight = st.number_input("Weight (kg)", min_value=1.0)
+
+    bmi = None
+
+    if st.button("Calculate BMI"):
+        bmi = weight / ((height/100)**2)
+        st.success(f"Your BMI is {bmi:.2f}")
+
+        if bmi < 18.5:
+            st.write("📌 Underweight Diet Plan")
+        elif bmi < 25:
+            st.write("📌 Healthy Maintenance Diet")
+        else:
+            st.write("📌 Weight Loss Diet Plan")
+
+    st.subheader("Performance Progress")
+
+    import pandas as pd
+
+    data = pd.DataFrame({
+        "Week":[1,2,3,4,5],
+        "Score":[60,70,75,85,90]
+    })
+
+    st.line_chart(data.set_index("Week"))
 elif menu == "AI Dietician":
     weight = st.number_input("Weight (kg)")
     goal = st.selectbox("Goal", ["Weight Loss", "Weight Gain"])
