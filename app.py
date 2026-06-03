@@ -22,8 +22,6 @@ menu = st.sidebar.selectbox(
 
 # ---------------- HOME ----------------
 
-# ---------------- HOME ----------------
-
 if menu == "Home":
 
     st.image("https://images.unsplash.com/photo-1517836357463-d25dfeac3438")
