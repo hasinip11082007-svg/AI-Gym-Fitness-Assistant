@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import random
 
-st.set_page_config(page_title="AI Gym Assistant", page_icon="🏋️")
+st.set_page_config(page_title="AI Gym Assistant", page_icon="🏋️") 
 
 st.title("🏋️ AI Gym & Fitness Assistant")
 
